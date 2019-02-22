@@ -9,12 +9,12 @@ import javax.swing.JFrame;
 public class ApplicationWindow extends JFrame
 {
 	private static final long serialVersionUID = -8797714676226678332L;
-	JFrame frame = new JFrame("Basic AI");
 	
-	Container container = new Container();
-	
-	public void createFrame(int width, int height) 
+	public static void createFrame(int width, int height) 
 	{
+		JFrame frame = new JFrame("Basic AI");
+		Container container = new Container();
+		
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		
 		frame.setPreferredSize(new Dimension(width, height));
