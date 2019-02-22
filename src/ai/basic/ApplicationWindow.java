@@ -24,6 +24,7 @@ public class ApplicationWindow extends JFrame
 		
 		//Set stuff that JFrame needs
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setContentPane(new Draw());
 		frame.getContentPane().add(lable, BorderLayout.CENTER);
 		frame.pack();
 		
