@@ -18,11 +18,16 @@ public class ApplicationWindow extends JFrame
 		
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		
+		//Set the size of the window
 		frame.setPreferredSize(new Dimension(width, height));
 		
+		//Set stuff that JFrame needs
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().add(container, BorderLayout.CENTER);
 		frame.pack();
+		
+		//Set the location of the JFrame and set it visible
+		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
 }
