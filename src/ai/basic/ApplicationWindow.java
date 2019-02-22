@@ -10,9 +10,10 @@ public class ApplicationWindow extends JFrame
 {
 	private static final long serialVersionUID = -8797714676226678332L;
 	
+	private static JFrame frame = new JFrame("Basic AI");
+	
 	public static void createFrame(int width, int height) 
 	{
-		JFrame frame = new JFrame("Basic AI");
 		Container container = new Container();
 		
 		JFrame.setDefaultLookAndFeelDecorated(true);
