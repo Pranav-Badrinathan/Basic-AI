@@ -17,4 +17,10 @@ public class Vector2
 		this.x = x;
 		this.y = y;
 	}
+
+	// Compare two vectors
+	public boolean equals(Vector2 other)
+	{
+		return (this.x == other.x && this.y == other.y);
+	}
 }
