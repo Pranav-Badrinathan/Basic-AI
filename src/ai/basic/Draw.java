@@ -13,6 +13,6 @@ public class Draw extends JPanel
 	protected void paintComponent(Graphics g) 
 	{
 		g.setColor(Color.BLACK);
-		g.drawRect(100, 100, 50, 50);
+		g.fillRect(100, 100, 50, 50);
 	}
 }
