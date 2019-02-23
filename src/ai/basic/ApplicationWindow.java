@@ -11,7 +11,7 @@ public class ApplicationWindow extends JFrame
 {
 	private static final long serialVersionUID = -8797714676226678332L;
 	
-	private static JFrame frame = new JFrame("Basic AI");
+	public static JFrame frame = new JFrame("Basic AI");
 	
 	public static void createFrame(int width, int height) 
 	{	
@@ -24,8 +24,10 @@ public class ApplicationWindow extends JFrame
 		
 		//Set stuff that JFrame needs
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setContentPane(new Draw());
 		frame.getContentPane().add(lable, BorderLayout.CENTER);
+		
+		//TODO frame.setContentPane();
+		
 		frame.pack();
 		
 		//Set the location of the JFrame and set it visible
