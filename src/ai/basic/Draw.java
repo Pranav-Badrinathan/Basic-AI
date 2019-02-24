@@ -11,21 +11,19 @@ public class Draw extends JPanel
 {
 	private static final long serialVersionUID = 1458492569258787300L;
 	
-	private IHasToBeDrawn itemsToDraw;
+	private IHasToBeDrawn[] itemsToDraw;
 	
-	public Draw(IHasToBeDrawn itemsToDraw)
+	public Draw()
 	{
-		this.itemsToDraw = itemsToDraw;
+		
 	}
 	
 	@Override
 	protected void paintComponent(Graphics g) 
 	{
-		//for (IHasToBeDrawn item : itemsToDraw)
-		//{
-			//item.drawToScreen(g);
-		//}
-		
-		itemsToDraw.drawToScreen((Graphics2D)g);
+		for (IHasToBeDrawn item : itemsToDraw)
+		{
+			item.drawToScreen((Graphics2D)g);
+		}
 	}
 }
