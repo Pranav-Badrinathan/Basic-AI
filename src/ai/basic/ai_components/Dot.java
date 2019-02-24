@@ -1,11 +1,13 @@
 package ai.basic.ai_components;
 
 import java.awt.Color;
+import java.awt.Graphics;
 
 import ai.basic.ApplicationWindow;
-import ai.basic.custom_types.Vector2;
+import ai.basic.util.custom_types.Vector2;
+import ai.basic.util.interfaces.IHasToBeDrawn;
 
-public class Dot
+public class Dot implements IHasToBeDrawn
 {
 	public Vector2 position;
 	public Vector2 velocity;
@@ -29,7 +31,8 @@ public class Dot
 		this.size = size;
 	}
 
-	public void drawToScreen()
+	@Override
+	public void drawToScreen(Graphics g)
 	{
 		
 	}

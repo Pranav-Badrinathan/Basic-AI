@@ -1,6 +1,6 @@
 package ai.basic.ai_components;
 
-import ai.basic.custom_types.Vector2;
+import ai.basic.util.custom_types.Vector2;
 
 public class Brain
 {

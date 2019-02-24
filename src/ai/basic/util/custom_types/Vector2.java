@@ -1,4 +1,4 @@
-package ai.basic.custom_types;
+package ai.basic.util.custom_types;
 
 public class Vector2
 {
