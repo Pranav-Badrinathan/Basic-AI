@@ -1,7 +1,7 @@
 package ai.basic.ai_components;
 
 import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import ai.basic.ApplicationWindow;
 import ai.basic.util.custom_types.Vector2;
@@ -16,7 +16,6 @@ public class Dot implements IHasToBeDrawn
 	public Brain dotBrain;
 	
 	public Color dotColor;
-
 	public int size;
 	
 	public Dot(Color color, int size)
@@ -32,8 +31,8 @@ public class Dot implements IHasToBeDrawn
 	}
 
 	@Override
-	public void drawToScreen(Graphics g)
+	public void drawToScreen(Graphics2D g)
 	{
-		
+		g.fillOval((int)position.x, (int)position.y, size, size);
 	}
 }

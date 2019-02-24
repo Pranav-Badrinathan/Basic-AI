@@ -1,6 +1,7 @@
 package ai.basic;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
@@ -10,9 +11,9 @@ public class Draw extends JPanel
 {
 	private static final long serialVersionUID = 1458492569258787300L;
 	
-	private IHasToBeDrawn[] itemsToDraw;
+	private IHasToBeDrawn itemsToDraw;
 	
-	public Draw(IHasToBeDrawn[] itemsToDraw)
+	public Draw(IHasToBeDrawn itemsToDraw)
 	{
 		this.itemsToDraw = itemsToDraw;
 	}
@@ -20,9 +21,11 @@ public class Draw extends JPanel
 	@Override
 	protected void paintComponent(Graphics g) 
 	{
-		for (IHasToBeDrawn item : itemsToDraw)
-		{
-			item.drawToScreen(g);
-		}
+		//for (IHasToBeDrawn item : itemsToDraw)
+		//{
+			//item.drawToScreen(g);
+		//}
+		
+		itemsToDraw.drawToScreen((Graphics2D)g);
 	}
 }
