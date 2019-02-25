@@ -15,7 +15,7 @@ public class ApplicationWindow extends JFrame
 	
 	public static void createFrame(int width, int height) 
 	{	
-		JLabel lable = new JLabel("Game Contents Go Here", SwingConstants.CENTER);
+		//JLabel lable = new JLabel("Game Contents Go Here", SwingConstants.CENTER);
 		
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		
@@ -24,9 +24,9 @@ public class ApplicationWindow extends JFrame
 		
 		//Set stuff that JFrame needs
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().add(lable, BorderLayout.CENTER);
+		//frame.getContentPane().add(lable, BorderLayout.CENTER);
 		
-		//TODO frame.setContentPane();
+		frame.setContentPane(new Draw());
 		
 		frame.pack();
 		

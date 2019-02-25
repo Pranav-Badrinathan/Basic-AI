@@ -17,11 +17,11 @@ public class Brain
 
 	private void randomize()
 	{
-		for (Vector2 dir : directions)
+		for (int i = 0; i < directions.length; i++)
 		{
 			Random rand = new Random();
 			double randomAngle = rand.nextDouble() * (2 * Math.PI);
-			dir = Vector2.fromAngle(randomAngle);
+			directions[i] = Vector2.fromAngle(randomAngle);
 		}
 	}
 }

@@ -8,7 +8,7 @@ public class Main {
 	{	
 		System.out.println("Hello, World!");
 		
-		ApplicationWindow.createFrame(500, 600);
 		ItemStorage.initDrawItems();
+		ApplicationWindow.createFrame(500, 600);
 	}
 }

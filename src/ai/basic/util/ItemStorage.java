@@ -6,14 +6,14 @@ import ai.basic.ai_components.Dot;
 
 public class ItemStorage
 {
-	public static Dot[] dots = new Dot[2];
+	public static Dot[] dots = new Dot[4];
 
 	@SuppressWarnings("unused")
 	public static void initDrawItems()
 	{
-		for (Dot dot : dots)
+		for (int i = 0; i < dots.length; i++)
 		{
-			dot = new Dot(Color.BLACK, 5);
+			dots[i] = new Dot(Color.BLACK, 5);
 		}
 	}
 }

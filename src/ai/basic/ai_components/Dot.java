@@ -1,7 +1,7 @@
 package ai.basic.ai_components;
 
 import java.awt.Color;
-import java.awt.Graphics2D;
+import java.awt.Graphics;
 
 import ai.basic.ApplicationWindow;
 import ai.basic.util.custom_types.Vector2;
@@ -32,7 +32,7 @@ public class Dot implements IHasToBeDrawn, IHasToMove
 	}
 
 	@Override
-	public void drawToScreen(Graphics2D g)
+	public void drawToScreen(Graphics g)
 	{
 		g.fillOval((int) position.x, (int) position.y, size, size);
 	}
@@ -48,5 +48,7 @@ public class Dot implements IHasToBeDrawn, IHasToMove
 		
 		velocity.add(acceleration);
 		position.add(velocity);
+		
+		ApplicationWindow.frame.repaint();
 	}
 }

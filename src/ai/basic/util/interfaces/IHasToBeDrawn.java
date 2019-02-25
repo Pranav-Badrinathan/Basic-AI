@@ -1,8 +1,8 @@
 package ai.basic.util.interfaces;
 
-import java.awt.Graphics2D;
+import java.awt.Graphics;
 
 public interface IHasToBeDrawn
 {
-	public void drawToScreen(Graphics2D g);
-}
+	public void drawToScreen(Graphics g);
+}			

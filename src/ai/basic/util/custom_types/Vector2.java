@@ -27,11 +27,14 @@ public class Vector2
 	// Add 2 vectors
 	public Vector2 add(Vector2 other)
 	{
-		return (new Vector2(this.x + other.x, this.y + other.y));
+		this.x += other.x;
+		this.y += other.y;
+		
+		return this;
 	}
 
 	public static Vector2 fromAngle(double randomAngle)
 	{
-		return new Vector2((float)Math.cos(randomAngle),(float)Math.sin(randomAngle));
+		return new Vector2(Math.cos(randomAngle), Math.sin(randomAngle));
 	}
 }
