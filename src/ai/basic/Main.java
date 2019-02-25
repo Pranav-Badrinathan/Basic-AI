@@ -1,6 +1,6 @@
 package ai.basic;
 
-import ai.basic.util.ItemsToDraw;
+import ai.basic.util.ItemStorage;
 
 public class Main {
 
@@ -9,6 +9,6 @@ public class Main {
 		System.out.println("Hello, World!");
 		
 		ApplicationWindow.createFrame(500, 600);
-		ItemsToDraw.initDrawItems();
+		ItemStorage.initDrawItems();
 	}
 }

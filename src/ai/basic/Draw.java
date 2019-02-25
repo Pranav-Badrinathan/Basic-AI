@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-import ai.basic.util.ItemsToDraw;
+import ai.basic.util.ItemStorage;
 import ai.basic.util.interfaces.IHasToBeDrawn;
 import ai.basic.util.interfaces.IHasToMove;
 
@@ -18,9 +18,9 @@ public class Draw extends JPanel
 	
 	public Draw()
 	{
-		ItemsToDraw.initDrawItems();
-		itemsToDraw = ItemsToDraw.dots;
-		itemsToMove = ItemsToDraw.dots;
+		ItemStorage.initDrawItems();
+		itemsToDraw = ItemStorage.dots;
+		itemsToMove = ItemStorage.dots;
 	}
 	
 	@Override

@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import ai.basic.ai_components.Dot;
 
-public class ItemsToDraw
+public class ItemStorage
 {
 	public static Dot[] dots = new Dot[2];
 

@@ -23,4 +23,15 @@ public class Vector2
 	{
 		return (this.x == other.x && this.y == other.y);
 	}
+
+	// Add 2 vectors
+	public Vector2 add(Vector2 other)
+	{
+		return (new Vector2(this.x + other.x, this.y + other.y));
+	}
+
+	public static Vector2 fromAngle(double randomAngle)
+	{
+		return new Vector2((float)Math.cos(randomAngle),(float)Math.sin(randomAngle));
+	}
 }
