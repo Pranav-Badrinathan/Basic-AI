@@ -19,12 +19,11 @@ public class ApplicationWindow extends JFrame
 		
 		//Set stuff that JFrame needs
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		frame.pack();
-		frame.setVisible(true);
 		frame.setContentPane(new Draw());
+		frame.pack();
 		
 		//Set the location of the JFrame and set it visible
 		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
 	}
 }
