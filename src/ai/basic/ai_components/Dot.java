@@ -6,8 +6,9 @@ import java.awt.Graphics2D;
 import ai.basic.ApplicationWindow;
 import ai.basic.util.custom_types.Vector2;
 import ai.basic.util.interfaces.IHasToBeDrawn;
+import ai.basic.util.interfaces.IHasToMove;
 
-public class Dot implements IHasToBeDrawn
+public class Dot implements IHasToBeDrawn, IHasToMove
 {
 	public Vector2 position;
 	public Vector2 velocity;
@@ -34,5 +35,11 @@ public class Dot implements IHasToBeDrawn
 	public void drawToScreen(Graphics2D g)
 	{
 		g.fillOval((int)position.x, (int)position.y, size, size);
+	}
+
+	@Override
+	public void move()
+	{
+		
 	}
 }
