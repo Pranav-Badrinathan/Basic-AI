@@ -6,7 +6,7 @@ import ai.basic.ai_components.Dot;
 
 public class ItemStorage
 {
-	public static Dot[] dots = new Dot[4];
+	public static Dot[] dots = new Dot[20];
 
 	@SuppressWarnings("unused")
 	public static void initDrawItems()

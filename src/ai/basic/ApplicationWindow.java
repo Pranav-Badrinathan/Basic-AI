@@ -1,11 +1,8 @@
 package ai.basic;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 
 public class ApplicationWindow extends JFrame
 {
@@ -15,8 +12,6 @@ public class ApplicationWindow extends JFrame
 	
 	public static void createFrame(int width, int height) 
 	{	
-		//JLabel lable = new JLabel("Game Contents Go Here", SwingConstants.CENTER);
-		
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		
 		//Set the size of the window
@@ -24,14 +19,12 @@ public class ApplicationWindow extends JFrame
 		
 		//Set stuff that JFrame needs
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//frame.getContentPane().add(lable, BorderLayout.CENTER);
-		
-		frame.setContentPane(new Draw());
 		
 		frame.pack();
+		frame.setVisible(true);
+		frame.setContentPane(new Draw());
 		
 		//Set the location of the JFrame and set it visible
 		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
 	}
 }

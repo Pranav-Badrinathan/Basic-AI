@@ -1,7 +1,6 @@
 package ai.basic;
 
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
@@ -17,7 +16,7 @@ public class Draw extends JPanel
 	private IHasToMove[] itemsToMove;
 
 	public Draw()
-	{
+	{	
 		itemsToDraw = ItemStorage.dots;
 		itemsToMove = ItemStorage.dots;
 	}

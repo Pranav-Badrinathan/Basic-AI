@@ -23,7 +23,7 @@ public class Dot implements IHasToBeDrawn, IHasToMove
 	{
 		dotBrain = new Brain(400);
 
-		position = new Vector2(ApplicationWindow.frame.getWidth() / 2, ApplicationWindow.frame.getHeight() / 2);
+		position = new Vector2();
 		velocity = new Vector2();
 		acceleration = new Vector2();
 
@@ -45,10 +45,13 @@ public class Dot implements IHasToBeDrawn, IHasToMove
 			acceleration = dotBrain.directions[dotBrain.step];
 			dotBrain.step++;
 		}
-		
+
 		velocity.add(acceleration);
+
+		velocity.limit(0.5);
+
 		position.add(velocity);
-		
+
 		ApplicationWindow.frame.repaint();
 	}
 }
