@@ -4,21 +4,17 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-import ai.basic.util.ItemStorage;
-import ai.basic.util.interfaces.IHasToBeDrawn;
-import ai.basic.util.interfaces.IHasToMove;
+import ai.basic.util.DotCluster;
 
 public class Draw extends JPanel
 {
 	private static final long serialVersionUID = 1458492569258787300L;
-
-	private IHasToBeDrawn[] itemsToDraw;
-	private IHasToMove[] itemsToMove;
+	
+	DotCluster cluster = new DotCluster(200);
 
 	public Draw()
 	{	
-		itemsToDraw = ItemStorage.dots;
-		itemsToMove = ItemStorage.dots;
+		cluster.initDrawItems();
 	}
 
 	@Override
@@ -26,14 +22,7 @@ public class Draw extends JPanel
 	{
 		super.paintComponent(g);
 		
-		for (IHasToBeDrawn item : itemsToDraw)
-		{
-			item.drawToScreen(g);
-		}
-
-		for (IHasToMove item : itemsToMove)
-		{
-			item.move();
-		}
+		cluster.drawToScreen(g);
+		cluster.move();
 	}
 }

@@ -35,7 +35,8 @@ public class Vector2
 
 	public static Vector2 fromAngle(double randomAngle)
 	{
-		return new Vector2(Math.cos(randomAngle), Math.sin(randomAngle));
+		Vector2 target = new Vector2(Math.cos(randomAngle), Math.sin(randomAngle));
+		return target;
 	}
 
 	public Vector2 limit(double max)

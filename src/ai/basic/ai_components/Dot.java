@@ -19,9 +19,11 @@ public class Dot implements IHasToBeDrawn, IHasToMove
 	public Color dotColor;
 	public int size;
 
+	private boolean isDead = false;
+
 	public Dot(Color color, int size)
 	{
-		dotBrain = new Brain(400);
+		dotBrain = new Brain(4000);
 
 		position = new Vector2();
 		velocity = new Vector2();
@@ -40,17 +42,28 @@ public class Dot implements IHasToBeDrawn, IHasToMove
 	@Override
 	public void move()
 	{
-		if (dotBrain.directions.length > dotBrain.step)
+		if (!isDead)
 		{
-			acceleration = dotBrain.directions[dotBrain.step];
-			dotBrain.step++;
+			if (dotBrain.directions.length > dotBrain.step)
+			{
+				acceleration = dotBrain.directions[dotBrain.step];
+				dotBrain.step++;
+			} else
+			{
+				isDead = true;
+			}
+
+			if ((position.x < -2 || position.y < -2 || position.x > 500 + 2 || position.y > 600 + 2))
+			{
+				isDead = true;
+			}
+
+			velocity.add(acceleration);
+
+			velocity.limit(2);
+
+			position.add(velocity);
 		}
-
-		velocity.add(acceleration);
-
-		velocity.limit(0.5);
-
-		position.add(velocity);
 
 		ApplicationWindow.frame.repaint();
 	}
