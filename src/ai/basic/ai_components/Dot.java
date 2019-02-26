@@ -29,6 +29,7 @@ public class Dot implements IHasToBeDrawn, IHasToMove
 			position = new Vector2((ApplicationWindow.width - size) / 2, (ApplicationWindow.height - size) / 2);
 		else
 			position = new Vector2((ApplicationWindow.width - size) / 2, 10);
+		
 		velocity = new Vector2();
 		acceleration = new Vector2();
 
