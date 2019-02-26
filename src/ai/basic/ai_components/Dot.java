@@ -25,7 +25,7 @@ public class Dot implements IHasToBeDrawn, IHasToMove
 	{
 		dotBrain = new Brain(4000);
 
-		position = new Vector2();
+		position = new Vector2((ApplicationWindow.width - size) / 2, (ApplicationWindow.height - size) / 2);
 		velocity = new Vector2();
 		acceleration = new Vector2();
 
@@ -53,7 +53,9 @@ public class Dot implements IHasToBeDrawn, IHasToMove
 				isDead = true;
 			}
 
-			if ((position.x < -2 || position.y < -2 || position.x > 500 + 2 || position.y > 600 + 2))
+			if ((position.x < -2 || position.y < -2
+					|| position.x > ApplicationWindow.frame.getContentPane().getWidth() - 2
+					|| position.y > ApplicationWindow.frame.getContentPane().getHeight() - 2))
 			{
 				isDead = true;
 			}

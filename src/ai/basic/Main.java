@@ -6,6 +6,6 @@ public class Main
 	{
 		System.out.println("Hello, World!");
 
-		ApplicationWindow.createFrame(500, 600);
+		ApplicationWindow.createFrame(600, 600);
 	}
 }

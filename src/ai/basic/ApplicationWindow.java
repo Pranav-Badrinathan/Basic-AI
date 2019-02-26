@@ -1,7 +1,5 @@
 package ai.basic;
 
-import java.awt.Dimension;
-
 import javax.swing.JFrame;
 
 public class ApplicationWindow extends JFrame
@@ -10,16 +8,22 @@ public class ApplicationWindow extends JFrame
 	
 	public static JFrame frame = new JFrame("Basic AI");
 	
+	public static int width;
+	public static int height;
+	
 	public static void createFrame(int width, int height) 
-	{	
+	{
+		ApplicationWindow.width = width;
+		ApplicationWindow.height = height;
+		
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		
 		//Set the size of the window
-		frame.setPreferredSize(new Dimension(width, height));
+		//frame.setPreferredSize(new Dimension(width, height));
 		
 		//Set stuff that JFrame needs
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setContentPane(new Draw());
+		frame.getContentPane().add(new Draw(width, height));
 		frame.pack();
 		
 		//Set the location of the JFrame and set it visible

@@ -1,5 +1,6 @@
 package ai.basic;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
@@ -12,8 +13,9 @@ public class Draw extends JPanel
 	
 	DotCluster cluster = new DotCluster(200);
 
-	public Draw()
-	{	
+	public Draw(int width, int height)
+	{
+		this.setPreferredSize(new Dimension(width, height));
 		cluster.initDrawItems();
 	}
 

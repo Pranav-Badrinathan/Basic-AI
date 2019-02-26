@@ -20,7 +20,7 @@ public class DotCluster implements IHasToBeDrawn, IHasToMove
 	{
 		for (int i = 0; i < dots.length; i++)
 		{
-			dots[i] = new Dot(Color.BLACK, 5);
+			dots[i] = new Dot(Color.BLACK, 4);
 		}
 	}
 

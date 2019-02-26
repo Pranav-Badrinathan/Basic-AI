@@ -17,7 +17,7 @@ public class Brain
 	{
 		for (int i = 0; i < directions.length; i++)
 		{
-			double randomAngle = Math.random() * (5 * Math.PI);
+			double randomAngle = Math.random() * (2 * Math.PI);
 			directions[i] = Vector2.fromAngle(randomAngle);
 		}
 	}
