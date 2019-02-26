@@ -29,12 +29,57 @@ public class Vector2
 	{
 		this.x += other.x;
 		this.y += other.y;
-		
+
 		return this;
 	}
 
 	public static Vector2 fromAngle(double randomAngle)
 	{
-		return new Vector2(Math.cos(randomAngle), Math.sin(randomAngle));
+		Vector2 target = new Vector2(Math.cos(randomAngle), Math.sin(randomAngle));
+		return target;
+	}
+
+	public Vector2 limit(double max)
+	{
+		if (magSq() > max * max)
+		{
+			normalize();
+			mult(max);
+		}
+		return this;
+	}
+
+	public double magSq()
+	{
+		return (x * x + y * y);
+	}
+
+	public Vector2 mult(double n)
+	{
+		x *= n;
+		y *= n;
+		return this;
+	}
+
+	public Vector2 div(float n)
+	{
+		x /= n;
+		y /= n;
+		return this;
+	}
+
+	public Vector2 normalize()
+	{
+		float m = mag();
+		if (m != 0 && m != 1)
+		{
+			div(m);
+		}
+		return this;
+	}
+
+	public float mag()
+	{
+		return (float) Math.sqrt(x * x + y * y);
 	}
 }

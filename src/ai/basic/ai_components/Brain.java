@@ -1,7 +1,5 @@
 package ai.basic.ai_components;
 
-import java.util.Random;
-
 import ai.basic.util.custom_types.Vector2;
 
 public class Brain
@@ -19,8 +17,7 @@ public class Brain
 	{
 		for (int i = 0; i < directions.length; i++)
 		{
-			Random rand = new Random();
-			double randomAngle = rand.nextDouble() * (2 * Math.PI);
+			double randomAngle = Math.random() * (2 * Math.PI);
 			directions[i] = Vector2.fromAngle(randomAngle);
 		}
 	}

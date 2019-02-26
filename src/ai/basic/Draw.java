@@ -1,25 +1,25 @@
 package ai.basic;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-import ai.basic.util.ItemStorage;
-import ai.basic.util.interfaces.IHasToBeDrawn;
-import ai.basic.util.interfaces.IHasToMove;
+import ai.basic.ai_components.Dot;
+import ai.basic.util.DotCluster;
 
 public class Draw extends JPanel
 {
 	private static final long serialVersionUID = 1458492569258787300L;
+	
+	DotCluster cluster = new DotCluster(200);
+	Dot target = new Dot(Color.CYAN, 10, true);
 
-	private IHasToBeDrawn[] itemsToDraw;
-	private IHasToMove[] itemsToMove;
-
-	public Draw()
+	public Draw(int width, int height)
 	{
-		itemsToDraw = ItemStorage.dots;
-		itemsToMove = ItemStorage.dots;
+		this.setPreferredSize(new Dimension(width, height));
+		cluster.initDrawItems();
 	}
 
 	@Override
@@ -27,14 +27,12 @@ public class Draw extends JPanel
 	{
 		super.paintComponent(g);
 		
-		for (IHasToBeDrawn item : itemsToDraw)
-		{
-			item.drawToScreen(g);
-		}
-
-		for (IHasToMove item : itemsToMove)
-		{
-			item.move();
-		}
+		//Draw the target to the screen
+		target.drawToScreen(g);
+		
+		//Draw and move dots on screen
+		cluster.drawToScreen(g);
+		cluster.move();
+		cluster.collisionDetection(target.position);
 	}
 }
