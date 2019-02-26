@@ -27,8 +27,10 @@ public class Draw extends JPanel
 	{
 		super.paintComponent(g);
 		
+		//Draw the target to the screen
 		target.drawToScreen(g);
 		
+		//Draw and move dots on screen
 		cluster.drawToScreen(g);
 		cluster.move();
 	}
