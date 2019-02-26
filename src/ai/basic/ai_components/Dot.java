@@ -21,11 +21,14 @@ public class Dot implements IHasToBeDrawn, IHasToMove
 
 	private boolean isDead = false;
 
-	public Dot(Color color, int size)
+	public Dot(Color color, int size, boolean isTarget)
 	{
-		dotBrain = new Brain(4000);
-
-		position = new Vector2((ApplicationWindow.width - size) / 2, (ApplicationWindow.height - size) / 2);
+		dotBrain = new Brain(1000);
+		
+		if(!isTarget)
+			position = new Vector2((ApplicationWindow.width - size) / 2, (ApplicationWindow.height - size) / 2);
+		else
+			position = new Vector2((ApplicationWindow.width - size) / 2, 10);
 		velocity = new Vector2();
 		acceleration = new Vector2();
 
@@ -62,7 +65,7 @@ public class Dot implements IHasToBeDrawn, IHasToMove
 
 			velocity.add(acceleration);
 
-			velocity.limit(2);
+			velocity.limit(2.5);
 
 			position.add(velocity);
 		}
