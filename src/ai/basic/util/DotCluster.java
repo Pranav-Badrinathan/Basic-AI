@@ -4,10 +4,12 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import ai.basic.ai_components.Dot;
+import ai.basic.util.custom_types.Vector2;
 import ai.basic.util.interfaces.IHasToBeDrawn;
+import ai.basic.util.interfaces.IHasToCollide;
 import ai.basic.util.interfaces.IHasToMove;
 
-public class DotCluster implements IHasToBeDrawn, IHasToMove
+public class DotCluster implements IHasToBeDrawn, IHasToMove, IHasToCollide
 {
 	public Dot[] dots;
 	
@@ -39,6 +41,15 @@ public class DotCluster implements IHasToBeDrawn, IHasToMove
 		for (Dot dot : dots)
 		{
 			dot.drawToScreen(g);
+		}
+	}
+	
+	@Override
+	public void collisionDetection(Vector2 targetPosition)
+	{
+		for (Dot dot : dots)
+		{
+			dot.collisionDetection(targetPosition);
 		}
 	}
 }

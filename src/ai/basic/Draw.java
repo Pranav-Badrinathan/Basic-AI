@@ -33,5 +33,6 @@ public class Draw extends JPanel
 		//Draw and move dots on screen
 		cluster.drawToScreen(g);
 		cluster.move();
+		cluster.collisionDetection(target.position);
 	}
 }
