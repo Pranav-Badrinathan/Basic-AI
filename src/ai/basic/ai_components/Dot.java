@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import ai.basic.ApplicationWindow;
+import ai.basic.Draw;
 import ai.basic.util.custom_types.Vector2;
 import ai.basic.util.interfaces.IHasToBeDrawn;
 import ai.basic.util.interfaces.IHasToCollide;
@@ -20,7 +21,10 @@ public class Dot implements IHasToBeDrawn, IHasToMove, IHasToCollide
 	public Color dotColor;
 	public int size;
 
-	private boolean isDead = false;
+	public double fitness;
+
+	public boolean isDead = false;
+	public boolean reachedTarget;
 
 	public Dot(Color color, int size, boolean isTarget)
 	{
@@ -48,13 +52,14 @@ public class Dot implements IHasToBeDrawn, IHasToMove, IHasToCollide
 	@Override
 	public void move()
 	{
-		if (!isDead)
+		if (!isDead && !reachedTarget)
 		{
 			if (dotBrain.directions.length > dotBrain.step)
 			{
 				acceleration = dotBrain.directions[dotBrain.step];
 				dotBrain.step++;
-			} else
+			}
+			else
 			{
 				isDead = true;
 			}
@@ -63,8 +68,6 @@ public class Dot implements IHasToBeDrawn, IHasToMove, IHasToCollide
 			velocity.limit(2.5);
 			position.add(velocity);
 		}
-
-		ApplicationWindow.frame.repaint();
 	}
 
 	@Override
@@ -75,12 +78,35 @@ public class Dot implements IHasToBeDrawn, IHasToMove, IHasToCollide
 		{
 			isDead = true;
 		}
-		
-		//Check collisions with the target
-		if (Math.sqrt(((Math.pow((position.x - targetPosition.x), 2) + Math.pow((position.y - targetPosition.y), 2)))) < 5)
+
+		// Check collisions with the target
+		if (Math.sqrt(
+				((Math.pow((position.x - targetPosition.x), 2) + Math.pow((position.y - targetPosition.y), 2)))) < 5)
 		{
-			isDead = true;
+			reachedTarget = true;
 		}
 
+	}
+
+	public void calculateFitness()
+	{
+		if (reachedTarget)
+		{
+			fitness = 1 / 16 + 10000 / (dotBrain.step * dotBrain.step);
+		}
+		else
+		{
+			double distToTarget = (Math.pow((position.x - Draw.target.position.x), 2)
+					+ Math.pow((position.y - Draw.target.position.y), 2));
+			fitness = 1 / (distToTarget * distToTarget);
+		}
+	}
+
+	public Dot getClone()
+	{
+		Dot clone = new Dot(Color.BLACK, 4, false);
+		clone.dotBrain = dotBrain.clone();
+
+		return clone;
 	}
 }

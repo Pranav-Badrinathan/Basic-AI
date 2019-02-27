@@ -12,9 +12,9 @@ import ai.basic.util.DotCluster;
 public class Draw extends JPanel
 {
 	private static final long serialVersionUID = 1458492569258787300L;
-	
+
 	DotCluster cluster = new DotCluster(200);
-	Dot target = new Dot(Color.CYAN, 10, true);
+	public static Dot target = new Dot(Color.CYAN, 10, true);
 
 	public Draw(int width, int height)
 	{
@@ -26,13 +26,34 @@ public class Draw extends JPanel
 	protected void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
+
+		if (cluster.allDotsDead())
+		{
+			geneticAlgorithm();
+		}
+		else
+		{
+			paintOnScreen(g);
+		}
 		
-		//Draw the target to the screen
+		ApplicationWindow.frame.repaint();
+	}
+
+	private void paintOnScreen(Graphics g)
+	{
+		// Draw the target to the screen
 		target.drawToScreen(g);
-		
-		//Draw and move dots on screen
+
+		// Draw and move dots on screen
 		cluster.drawToScreen(g);
 		cluster.move();
 		cluster.collisionDetection(target.position);
+	}
+
+	private void geneticAlgorithm()
+	{
+		cluster.calculateFitness();
+		cluster.naturalSelection();
+		cluster.mutateNextGenBrains();
 	}
 }

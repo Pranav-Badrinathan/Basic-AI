@@ -17,8 +17,39 @@ public class Brain
 	{
 		for (int i = 0; i < directions.length; i++)
 		{
-			double randomAngle = Math.random() * (2 * Math.PI);
-			directions[i] = Vector2.fromAngle(randomAngle);
+			directions[i] = randDir();
 		}
+	}
+
+	private Vector2 randDir()
+	{
+		double randomAngle = Math.random() * (2 * Math.PI);
+		return Vector2.fromAngle(randomAngle);
+	}
+
+	public void mutate()
+	{
+		double mutationRate = 0.01f;
+
+		for (int i = 0; i < directions.length; i++)
+		{
+			if (Math.random() > mutationRate)
+			{
+				// randomize this direction
+				directions[i] = randDir();
+			}
+		}
+	}
+
+	public Brain clone()
+	{
+		Brain clone = new Brain(directions.length);
+		
+		for (int i = 0; i < directions.length; i++)
+		{
+			clone.directions[i] = directions[i];
+		}
+		
+		return clone;
 	}
 }
