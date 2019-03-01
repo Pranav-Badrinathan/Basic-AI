@@ -29,7 +29,7 @@ public class Brain
 
 	public void mutate()
 	{
-		double mutationRate = 0.01f;
+		double mutationRate = 0.01;
 
 		for (int i = 0; i < directions.length; i++)
 		{

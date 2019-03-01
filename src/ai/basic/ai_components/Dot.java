@@ -5,6 +5,7 @@ import java.awt.Graphics;
 
 import ai.basic.ApplicationWindow;
 import ai.basic.Draw;
+import ai.basic.util.custom_types.UsefulMethods;
 import ai.basic.util.custom_types.Vector2;
 import ai.basic.util.interfaces.IHasToBeDrawn;
 import ai.basic.util.interfaces.IHasToCollide;
@@ -73,6 +74,7 @@ public class Dot implements IHasToBeDrawn, IHasToMove, IHasToCollide
 	@Override
 	public void collisionDetection(Vector2 targetPosition)
 	{
+		// Check Collisions with the walls
 		if ((position.x < -2 || position.y < -2 || position.x > ApplicationWindow.frame.getContentPane().getWidth() - 2
 				|| position.y > ApplicationWindow.frame.getContentPane().getHeight() - 2))
 		{
@@ -80,25 +82,22 @@ public class Dot implements IHasToBeDrawn, IHasToMove, IHasToCollide
 		}
 
 		// Check collisions with the target
-		if (Math.sqrt(
-				((Math.pow((position.x - targetPosition.x), 2) + Math.pow((position.y - targetPosition.y), 2)))) < 5)
+		if (UsefulMethods.dist(position, targetPosition) < 5)
 		{
 			reachedTarget = true;
 		}
-
 	}
 
 	public void calculateFitness()
 	{
 		if (reachedTarget)
 		{
-			fitness = 1 / 16 + 10000 / (dotBrain.step * dotBrain.step);
+			fitness = 1.0 / 16.0 + 10000.0 / (double) (dotBrain.step * dotBrain.step);
 		}
 		else
 		{
-			double distToTarget = (Math.pow((position.x - Draw.target.position.x), 2)
-					+ Math.pow((position.y - Draw.target.position.y), 2));
-			fitness = 1 / (distToTarget * distToTarget);
+			double distanceToGoal = UsefulMethods.dist(position, Draw.target.position);
+			fitness = 1.0 / (distanceToGoal * distanceToGoal);
 		}
 	}
 

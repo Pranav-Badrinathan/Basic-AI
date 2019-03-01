@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import ai.basic.ai_components.Dot;
 import ai.basic.util.DotCluster;
+import ai.basic.util.custom_types.Vector2;
 
 public class Draw extends JPanel
 {
@@ -16,10 +17,15 @@ public class Draw extends JPanel
 	DotCluster cluster = new DotCluster(200);
 	public static Dot target = new Dot(Color.CYAN, 10, true);
 
+	public static Vector2 targetCollider;
+
 	public Draw(int width, int height)
 	{
 		this.setPreferredSize(new Dimension(width, height));
 		cluster.initDrawItems();
+
+		targetCollider = new Vector2(target.position.x, target.position.y);
+		targetCollider.add(new Vector2((double)target.size / 2, (double)target.size / 2));
 	}
 
 	@Override
@@ -35,7 +41,7 @@ public class Draw extends JPanel
 		{
 			paintOnScreen(g);
 		}
-		
+
 		ApplicationWindow.frame.repaint();
 	}
 
@@ -47,7 +53,7 @@ public class Draw extends JPanel
 		// Draw and move dots on screen
 		cluster.drawToScreen(g);
 		cluster.move();
-		cluster.collisionDetection(target.position);
+		cluster.collisionDetection(targetCollider);
 	}
 
 	private void geneticAlgorithm()

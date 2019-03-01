@@ -66,26 +66,41 @@ public class DotCluster implements IHasToBeDrawn, IHasToMove, IHasToCollide
 	public void naturalSelection()
 	{
 		Dot[] nextGenDots = new Dot[dots.length];
+		Dot parent;
 
 		for (int i = 0; i < nextGenDots.length; i++)
 		{
 			// Get their parent and make the baby a clone of them
-			nextGenDots[i] = getParentBrain();
+			parent = getParent();
+			nextGenDots[i] = parent.getClone();
 		}
 		gen++;
-		dots = nextGenDots;
-		
+		dots = nextGenDots.clone();
+
 		// Setup nextGenDots
 		initDrawItems();
 	}
 
-	private Dot getParentBrain()
+	private double calculateFitnessSum()
+	{
+		double fitnessSum = 0;
+
+		for (int i = 0; i < dots.length; i++)
+		{
+			fitnessSum += dots[i].fitness;
+		}
+		
+		return fitnessSum;
+	}
+
+	private Dot getParent()
 	{
 		// First, calculate the fitness sum
-		double fitnessSum = 0;
-		for (Dot dot : dots)
+		double fitnessSum = calculateFitnessSum();
+
+		for (int i = 0; i < dots.length; i++)
 		{
-			fitnessSum += dot.fitness;
+			fitnessSum += dots[i].fitness;
 		}
 
 		// Get a random value from the fitness sum
@@ -95,9 +110,11 @@ public class DotCluster implements IHasToBeDrawn, IHasToMove, IHasToCollide
 		for (Dot dot : dots)
 		{
 			sum += dot.fitness;
-
 			if (sum > randValue)
-				return dot.getClone();
+			{
+				System.out.println("bye");
+				return dot;
+			}
 		}
 
 		// Code execution should never reach here. If it does, there is some error.
