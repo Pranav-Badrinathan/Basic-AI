@@ -81,26 +81,13 @@ public class DotCluster implements IHasToBeDrawn, IHasToMove, IHasToCollide
 		initDrawItems();
 	}
 
-	private double calculateFitnessSum()
-	{
-		double fitnessSum = 0;
-
-		for (int i = 0; i < dots.length; i++)
-		{
-			fitnessSum += dots[i].fitness;
-		}
-		
-		return fitnessSum;
-	}
-
 	private Dot getParent()
 	{
 		// First, calculate the fitness sum
-		double fitnessSum = calculateFitnessSum();
-
-		for (int i = 0; i < dots.length; i++)
+		double fitnessSum = 0;
+		for (Dot dot : dots)
 		{
-			fitnessSum += dots[i].fitness;
+			fitnessSum += dot.fitness;
 		}
 
 		// Get a random value from the fitness sum
@@ -110,13 +97,11 @@ public class DotCluster implements IHasToBeDrawn, IHasToMove, IHasToCollide
 		for (Dot dot : dots)
 		{
 			sum += dot.fitness;
-			if (sum > randValue)
-			{
-				System.out.println("bye");
-				return dot;
-			}
-		}
 
+			if (sum > randValue)
+				return dot.getClone();
+		}
+		
 		// Code execution should never reach here. If it does, there is some error.
 		return null;
 	}

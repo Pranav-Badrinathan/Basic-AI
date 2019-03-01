@@ -33,7 +33,7 @@ public class Brain
 
 		for (int i = 0; i < directions.length; i++)
 		{
-			if (Math.random() > mutationRate)
+			if (Math.random() < mutationRate)
 			{
 				// randomize this direction
 				directions[i] = randDir();
