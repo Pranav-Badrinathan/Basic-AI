@@ -14,6 +14,7 @@ public class DotCluster implements IHasToBeDrawn, IHasToMove, IHasToCollide
 	public Dot[] dots;
 
 	public int gen;
+	public int bestDotIndex;
 
 	public DotCluster(int size)
 	{
@@ -68,6 +69,8 @@ public class DotCluster implements IHasToBeDrawn, IHasToMove, IHasToCollide
 		Dot[] nextGenDots = new Dot[dots.length];
 		Dot parent;
 
+		getBestDot();
+
 		for (int i = 0; i < nextGenDots.length; i++)
 		{
 			// Get their parent and make the baby a clone of them
@@ -75,10 +78,15 @@ public class DotCluster implements IHasToBeDrawn, IHasToMove, IHasToCollide
 			nextGenDots[i] = parent.getClone();
 		}
 		gen++;
+
+		nextGenDots[0] = dots[bestDotIndex].getClone();
+
 		dots = nextGenDots.clone();
 
 		// Setup nextGenDots
 		initDrawItems();
+		dots[0].dotColor = Color.GREEN;
+		dots[0].size = 5;
 	}
 
 	private Dot getParent()
@@ -99,9 +107,9 @@ public class DotCluster implements IHasToBeDrawn, IHasToMove, IHasToCollide
 			sum += dot.fitness;
 
 			if (sum > randValue)
-				return dot.getClone();
+				return dot;
 		}
-		
+
 		// Code execution should never reach here. If it does, there is some error.
 		return null;
 	}
@@ -119,9 +127,22 @@ public class DotCluster implements IHasToBeDrawn, IHasToMove, IHasToCollide
 
 	public void mutateNextGenBrains()
 	{
-		for (Dot dot : dots)
+		for (int i = 1; i < dots.length; i++)
 		{
-			dot.dotBrain.mutate();
+			dots[i].dotBrain.mutate();
+		}
+	}
+
+	public void getBestDot()
+	{
+		double highestFitness = 0;
+		for (int i = 0; i < dots.length; i++)
+		{
+			if (dots[i].fitness > highestFitness)
+			{
+				bestDotIndex = i;
+				highestFitness = dots[i].fitness;
+			}
 		}
 	}
 }

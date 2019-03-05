@@ -32,7 +32,7 @@ public class Dot implements IHasToBeDrawn, IHasToMove, IHasToCollide
 		dotBrain = new Brain(1000);
 
 		if (!isTarget)
-			position = new Vector2((ApplicationWindow.width - size) / 2, (ApplicationWindow.height - size) / 2);
+			position = new Vector2((ApplicationWindow.width - size) / 2, ApplicationWindow.height - 200);
 		else
 			position = new Vector2((ApplicationWindow.width - size) / 2, 10);
 
@@ -92,7 +92,7 @@ public class Dot implements IHasToBeDrawn, IHasToMove, IHasToCollide
 	{
 		if (reachedTarget)
 		{
-			fitness = 1.0 / 16.0 + 10000.0 / (double) (dotBrain.step * dotBrain.step);
+			fitness = (1.0 / 16.0) + (10000.0 / (double) (dotBrain.step * dotBrain.step));
 		}
 		else
 		{
@@ -104,7 +104,7 @@ public class Dot implements IHasToBeDrawn, IHasToMove, IHasToCollide
 	public Dot getClone()
 	{
 		Dot clone = new Dot(Color.BLACK, 4, false);
-		clone.dotBrain = dotBrain.clone();
+		clone.dotBrain = dotBrain.cloneBrain();
 
 		return clone;
 	}

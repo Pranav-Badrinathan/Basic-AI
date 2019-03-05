@@ -40,8 +40,8 @@ public class Brain
 			}
 		}
 	}
-
-	public Brain clone()
+	
+	public Brain cloneBrain()
 	{
 		Brain clone = new Brain(directions.length);
 		

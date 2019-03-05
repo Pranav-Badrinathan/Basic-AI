@@ -14,7 +14,7 @@ public class Draw extends JPanel
 {
 	private static final long serialVersionUID = 1458492569258787300L;
 
-	DotCluster cluster = new DotCluster(200);
+	DotCluster cluster = new DotCluster(1000);
 	public static Dot target = new Dot(Color.CYAN, 10, true);
 
 	public static Vector2 targetCollider;
